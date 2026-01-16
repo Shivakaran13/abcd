@@ -57,7 +57,6 @@ Follow these steps to install and set up the project directly from the GitHub re
    - Navigate to the directory where you want to install the project.
    - Run the following command to clone the GitHub repository:
      ```
-     git clone https://github.com/KalyanMurapaka45/Heart-Disease-Prediction.git
      ```
 
 2. **Create a Virtual Environment** (Optional but recommended)
@@ -100,13 +99,13 @@ If you prefer to use Docker, you can install and run the project using a Docker 
    - Open your terminal or command prompt.
    - Run the following command to pull the Docker image from DockerHub:
      ```
-     docker pull kalyan45/heart-app
+
      ```
 
 2. **Run the Docker Container**
    - Start the Docker container by running the following command, and mapping any necessary ports:
      ```
-     docker run -p 5000:5000 kalyan45/heart-app
+ 
      ```
 
 3. **Access the Project**
@@ -119,12 +118,7 @@ If you prefer to use Docker, you can install and run the project using a Docker 
 We use MLflow to log and track our machine learning experiments. The MLFLOW_TRACKING_URI environment variable is set to the DagsHub repository's MLflow tracking URI.
 
 ```bash
-export MLFLOW_TRACKING_URI=https://dagshub.com/HemaKalyan45/Heart-Disease-Prediction.mlflow
 
-export MLFLOW_TRACKING_USERNAME=HemaKalyan45
-
-export MLFLOW_TRACKING_PASSWORD=f3c9457eb0ff83244e93ac8ee651b80d4b35f07c
-```
 
 ## Contributing
 
@@ -139,14 +133,6 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch
 5. Open a Pull Request
 
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-
-## Contact
-
-Hema Kalyan Murapaka - [@kalyanmurapaka274@gmail.com](kalyanmurapaka274@gmail.com)
 
 
 ## Acknowledgements
