@@ -1,140 +1,172 @@
 # Heart Disease Prediction
 
+A machine learning project to predict the presence of heart disease using clinical and diagnostic data. The project includes data preprocessing, model training and evaluation, experiment tracking with MLflow, and a simple Flask app for serving predictions.
 
 ## About The Project
 
+Heart disease prediction helps identify individuals at risk of cardiovascular conditions so that early interventions can be made. This repository demonstrates an end-to-end workflow: dataset preparation, exploratory data analysis, model training with CatBoost / XGBoost (and other baselines), experiment tracking with MLflow, and a small Flask-based web interface to serve the trained model.
 
-Heart disease prediction is a crucial aspect of preventive healthcare that involves the comprehensive analysis of diverse data points to evaluate an individual's susceptibility to cardiovascular diseases. This process integrates demographic details like age and gender with critical clinical information, including medical and family histories, lifestyle choices, and existing health conditions such as hypertension or diabetes. By examining biomarkers like blood pressure, cholesterol levels, and blood sugar, alongside results from medical tests and imaging studies, predictive models can identify patterns and trends indicative of potential heart issues. Machine learning algorithms play a pivotal role in processing this information, helping stratify individuals into risk categories. The ultimate goal is to enable timely interventions and personalized preventive strategies, empowering individuals to make lifestyle adjustments that can mitigate the risk of heart-related events like heart attacks or strokes. Continuous monitoring and updating of predictive models ensure ongoing accuracy and effectiveness in supporting proactive heart health management.
+## Dataset
 
-## About the Dataset
+This dataset contains clinical and diagnostic measurements commonly used to predict heart disease. There are 13 features and 1 target column.
 
-This dataset gives information related to heart disease. The dataset contains 13 columns, target is the class variable which is affected by the other 12 columns. Here the aim is to classify the target variable to (disease\non disease) using different machine learning algorithms and find out which algorithm is suitable for this dataset.
-<br><be>
+Attributes:
+- Age
+- Sex (Gender)
+- Chest pain type (typical angina, atypical angina, non-anginal pain, asymptomatic)
+- Resting blood pressure (in mm Hg)
+- Serum cholesterol in mg/dl
+- Fasting blood sugar > 120 mg/dl (1 = true; 0 = false)
+- Resting electrocardiographic results
+- Maximum heart rate achieved
+- Exercise-induced angina (1 = yes; 0 = no)
+- ST depression induced by exercise relative to rest (called "oldpeak")
+- Slope of the peak exercise ST segment
+- Number of major vessels (0-3) colored by fluoroscopy
+- Thalassemia (normal, fixed defect, reversible defect)
+- Target (presence of heart disease: 0 = no disease, 1 = disease)
 
-<h3>Attributes:</h3> 
-
- - Age 
- - Gender 
- - Chest Pain Type
- - Resting Blood Pressure
- - Serum Cholesterol 
- - Fasting Blood Sugar 
- - Resting Electrocardiographic Results
- - Maximum Heart Rate Achieved
- - Exercise-induced angina
- - Depression induced by exercise relative to rest
- - Slope of the Peak Exercise ST Segment
- - Number of Major Vessels Colored by Fluoroscopy
- - Thalassemia
- - Target 
+Note: Check the original dataset documentation or README in the data folder for exact encoding of categorical fields.
 
 ## Built With
 
- - Pandas
- - Numpy
- - Scikit-Learn
- - Seaborn
- - Matplotlib
- - Flask
- - DVC (Data Version Control)
- - MLFlow
- - Catboost
- - XG Boost
+- Python 3.x
+- Pandas
+- NumPy
+- Scikit-learn
+- CatBoost
+- XGBoost
+- MLflow
+- DVC (optional, for data versioning)
+- Flask (for the demo web app)
+- Matplotlib / Seaborn (visualizations)
 
 ## Getting Started
 
-This will help you understand how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+These instructions will help you run the project locally for development and testing.
 
-## Installation Steps
+### Prerequisites
 
-### Option 1: Installation from GitHub
+- Git
+- Python 3.8+ (or your preferred version; ensure compatibility)
+- Conda (optional, recommended) or venv
+- Docker (optional, if using the Docker image)
 
-Follow these steps to install and set up the project directly from the GitHub repository:
+### Option 1 — Install and run locally (recommended for development)
 
-1. **Clone the Repository**
-   - Open your terminal or command prompt.
-   - Navigate to the directory where you want to install the project.
-   - Run the following command to clone the GitHub repository:
-     ```
-     ```
-
-2. **Create a Virtual Environment** (Optional but recommended)
-   - It's a good practice to create a virtual environment to manage project dependencies. Run the following command:
-     ```
-     conda create -p <Environment_Name> python==<python version> -y
-     ```
-
-3. **Activate the Virtual Environment** (Optional)
-   - Activate the virtual environment based on your operating system:
-       ```
-       conda activate <Environment_Name>/
-       ```
-
-4. **Install Dependencies**
-   - Navigate to the project directory:
-     ```
-     cd [project_directory]
-     ```
-   - Run the following command to install project dependencies:
-     ```
-     pip install -r requirements.txt
-     ```
-
-5. **Run the Project**
-   - Start the project by running the appropriate command.
-     ```
-     python app.py
-     ```
-
-6. **Access the Project**
-   - Open a web browser or the appropriate client to access the project.
-  
-<br><br>
-### Option 2: Installation from DockerHub
-
-If you prefer to use Docker, you can install and run the project using a Docker container from DockerHub:
-
-1. **Pull the Docker Image**
-   - Open your terminal or command prompt.
-   - Run the following command to pull the Docker image from DockerHub:
-     ```
-
-     ```
-
-2. **Run the Docker Container**
-   - Start the Docker container by running the following command, and mapping any necessary ports:
-     ```
- 
-     ```
-
-3. **Access the Project**
-   - Open a web browser or the appropriate client to access the project.
-
-## Setup
-
-### MLflow Tracking
-
-We use MLflow to log and track our machine learning experiments. The MLFLOW_TRACKING_URI environment variable is set to the DagsHub repository's MLflow tracking URI.
-
+1. Clone the repository
 ```bash
+git clone https://github.com/Shivakaran13/abcd.git
+cd abcd
+```
 
+2. Create and activate a virtual environment (Conda example)
+```bash
+conda create -p ./env python=3.8 -y
+conda activate ./env
+```
+Or using venv:
+```bash
+python -m venv .venv
+# macOS / Linux
+source .venv/bin/activate
+# Windows
+.venv\Scripts\activate
+```
+
+3. Install Python dependencies
+```bash
+pip install -r requirements.txt
+```
+
+4. Prepare data / DVC (if using DVC)
+- If the repo uses DVC to fetch large data, run (example):
+```bash
+dvc pull
+```
+
+5. Run the Flask app (example)
+```bash
+python app.py
+```
+By default the app may run on http://127.0.0.1:5000 — check `app.py` for configuration.
+
+6. Use the API or web UI to send prediction requests (see the `app.py` / `README` within the app folder for usage examples).
+
+### Option 2 — Run with Docker
+
+1. Pull the Docker image (example — replace with actual image name on DockerHub if available)
+```bash
+docker pull shivakaran13/abcd:latest
+```
+
+2. Run the container and map required ports (example)
+```bash
+docker run -d --name heart-app -p 5000:5000 shivakaran13/abcd:latest
+```
+
+3. Access the app at http://localhost:5000
+
+If you produce your own Docker build:
+```bash
+docker build -t shivakaran13/abcd:local .
+docker run -p 5000:5000 shivakaran13/abcd:local
+```
+
+## MLflow Tracking Setup
+
+This project uses MLflow to log experiments. You can configure MLflow by setting the `MLFLOW_TRACKING_URI` environment variable to point to your MLflow server (e.g., DagsHub or a self-hosted tracking server).
+
+Example (Linux / macOS):
+```bash
+export MLFLOW_TRACKING_URI=https://dagshub.com/<username>/<repo>.mlflow
+```
+
+Example (Windows PowerShell):
+```powershell
+$env:MLFLOW_TRACKING_URI = "https://dagshub.com/<username>/<repo>.mlflow"
+```
+
+Run training scripts after setting the tracking URI so runs are recorded:
+```bash
+python run_training.py
+```
+(Replace `run_training.py` with the actual training script name in the repo.)
+
+## Project Structure (example)
+- data/               — raw and processed data
+- src/                — code for training, evaluation, and utilities
+- models/             — saved model artifacts
+- app.py              — Flask application to serve predictions
+- requirements.txt
+- mlruns/             — local MLflow runs (if used locally)
+
+Adjust to match the actual structure in this repository.
+
+## Usage
+
+- To train a model: run the training script (e.g., `python src/train.py`) and monitor runs in MLflow.
+- To evaluate: run evaluation scripts in `src/` (e.g., `python src/evaluate.py`).
+- To serve predictions locally: run `python app.py` and POST JSON payloads to the prediction endpoint.
+
+Refer to the code in `src/` for exact script names, CLI arguments, and expected input formats.
 
 ## Contributing
 
-Contributions are what makes the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are welcome! To contribute:
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+1. Fork the project
+2. Create a feature branch: `git checkout -b feature/my-feature`
+3. Commit your changes: `git commit -m "Add my feature"`
+4. Push to the branch: `git push origin feature/my-feature`
+5. Open a Pull Request and describe the change
 
-1. Fork the Project
-2. Create your Feature Branch
-3. Commit your Changes
-4. Push to the Branch
-5. Open a Pull Request
+Please follow any existing CONTRIBUTING.md or style guidelines in the repo.
 
+## License
 
+Add a LICENSE file to your repository to indicate the project's license. If you don't have one yet, consider an open-source license such as MIT.
 
 ## Acknowledgements
 
-We'd like to extend our gratitude to all individuals and organizations who have played a role in the development and success of this project. Your support, whether through contributions, inspiration, or encouragement, has been invaluable. Thank you for being a part of our journey.
+Thanks to the contributors and data providers that made this project possible. This project references classical heart disease datasets and commonly used ML benchmarks — please cite or acknowledge the original dataset sources if reused in publications.
