@@ -151,22 +151,3 @@ Adjust to match the actual structure in this repository.
 
 Refer to the code in `src/` for exact script names, CLI arguments, and expected input formats.
 
-## Contributing
-
-Contributions are welcome! To contribute:
-
-1. Fork the project
-2. Create a feature branch: `git checkout -b feature/my-feature`
-3. Commit your changes: `git commit -m "Add my feature"`
-4. Push to the branch: `git push origin feature/my-feature`
-5. Open a Pull Request and describe the change
-
-Please follow any existing CONTRIBUTING.md or style guidelines in the repo.
-
-## License
-
-Add a LICENSE file to your repository to indicate the project's license. If you don't have one yet, consider an open-source license such as MIT.
-
-## Acknowledgements
-
-Thanks to the contributors and data providers that made this project possible. This project references classical heart disease datasets and commonly used ML benchmarks — please cite or acknowledge the original dataset sources if reused in publications.
