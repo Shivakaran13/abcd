@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/KALYAN/Desktop/Heart%20Disease%20Prediction/mlruns/0/278517bb740c491db60903a182db2705/artifacts
+end_time: 1768235563209
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 278517bb740c491db60903a182db2705
+run_name: welcoming-shrike-184
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1768235554637
+status: 4
+tags: []
+user_id: 13shi

@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/KALYAN/Desktop/Heart%20Disease%20Prediction/mlruns/0/models/m-7bb1e00784a348efbec1830f580c4aaa/artifacts
+creation_timestamp: 1768237045668
+experiment_id: '0'
+last_updated_timestamp: 1768237060812
+model_id: m-7bb1e00784a348efbec1830f580c4aaa
+model_type: null
+name: Model
+source_run_id: 3888e9835dfb408792b848357410ebc6
+status: 3
+status_message: null

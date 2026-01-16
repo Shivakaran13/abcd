@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/KALYAN/Desktop/Heart%20Disease%20Prediction/mlruns/0/5d160e9a113741d1bbd4891fe9e1395d/artifacts
+end_time: 1768287894965
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 5d160e9a113741d1bbd4891fe9e1395d
+run_name: delightful-snake-550
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1768287885277
+status: 4
+tags: []
+user_id: 13shi

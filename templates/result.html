@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result - Heart Disease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .result-container {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .result-box {
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px auto;
+            max-width: 500px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .no-disease {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+        
+        .has-disease {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            border: 2px solid #dc3545;
+            color: #721c24;
+        }
+        
+        .result-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        
+        .result-text {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .result-description {
+            font-size: 16px;
+            margin-top: 15px;
+            line-height: 1.6;
+        }
+        
+        .button-group {
+            margin-top: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 10px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: #4caf50;
+            color: white;
+            border: 2px solid #4caf50;
+        }
+        
+        .btn-primary:hover {
+            background-color: #45a049;
+            border-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="result-container">
+            <h1>Heart Disease Prediction Result</h1>
+            
+            {% if final_result is defined %}
+                {% if final_result == 0 %}
+                    <div class="result-box no-disease">
+                        <div class="result-icon">✓</div>
+                        <div class="result-text">No Heart Disease Detected</div>
+                        <div class="result-description">
+                            Based on the provided medical data, our model indicates a low probability of heart disease. 
+                            However, please consult with a healthcare professional for a comprehensive evaluation.
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="result-box has-disease">
+                        <div class="result-icon">⚠</div>
+                        <div class="result-text">Heart Disease Risk Detected</div>
+                        <div class="result-description">
+                            Based on the provided medical data, our model indicates a potential risk of heart disease. 
+                            <strong>Please consult with a healthcare professional immediately</strong> for proper diagnosis and treatment.
+                        </div>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="result-box has-disease">
+                    <div class="result-icon">⚠</div>
+                    <div class="result-text">No Result Available</div>
+                    <div class="result-description">
+                        Unable to generate a prediction. Please try again.
+                    </div>
+                </div>
+            {% endif %}
+            
+            <div class="button-group">
+                <a href="/" class="btn btn-primary">Make Another Prediction</a>
+            </div>
+            
+            <div style="margin-top: 30px; padding: 15px; background-color: #fff3cd; border-radius: 8px; border-left: 4px solid #ffc107;">
+                <strong>Disclaimer:</strong> This prediction is for educational purposes only and should not be used as a substitute for professional medical advice, diagnosis, or treatment.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
